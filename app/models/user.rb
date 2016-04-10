@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
 
   has_many :teachings
   has_many :comments
+  has_many :favorites
 end
