@@ -2,6 +2,16 @@ Rails.application.routes.draw do
   resources :favorites
   resources :comments
   resources :teachings
+
+  devise_scope :user do
+    get :sign_up, to: 'devise/registrations#new'
+    get :sign_in, to: 'devise/sessions#new'
+    get :sign_out, to: 'devise/sessions#destroy'
+
+    get :change_password, to: 'registrations#change_password'
+    put :change_password, to: 'registrations#update_password'
+  end
+
   devise_for :users
 
   root 'teachings#index'
