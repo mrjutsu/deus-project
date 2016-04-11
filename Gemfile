@@ -38,6 +38,7 @@ gem 'devise'
 gem 'twitter-bootstrap-rails'
 gem 'omniauth-facebook', github: 'gioblu/omniauth-facebook'
 gem 'figaro'
+gem 'aws-sdk', '>= 2.0.34'
 gem "paperclip", "~> 5.0.0.beta1"
 
 group :development, :test do

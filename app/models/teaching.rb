@@ -8,7 +8,7 @@ class Teaching < ActiveRecord::Base
                     :url  => "/assets/documents/:id/:style/:basename.:extension",
                     :path => "/public/assets/teachings/documents/:id/:style/:basename.:extension",
                     :storage => :s3,
-                    :s3_region => "Oregon",
+                    :s3_region => "us-west-2",
               :bucket => "deus-project",
               :s3_protocol => 'https'
   # validates_attachment_content_type :program, content_type: ['application/pdf']
