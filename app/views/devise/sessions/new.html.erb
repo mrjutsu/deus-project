@@ -16,6 +16,8 @@
   <% end -%>
 
   <%= f.submit "Iniciar Sesión", class: "btn btn-default" %>
+
+  <%= link_to "Ingresar con Facebook", user_omniauth_authorize_path(:facebook) %>
 <% end %>
 
 <%= render "devise/shared/links" %>
