@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/gioblu/omniauth-facebook.git
+  revision: eff97bfae32f72821cbccf0b48b78351e41eb585
+  specs:
+    omniauth-facebook (2.1.0)
+      omniauth-oauth2 (~> 1.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -100,8 +107,6 @@ GEM
     omniauth (1.3.1)
       hashie (>= 1.2, < 4)
       rack (>= 1.0, < 3)
-    omniauth-facebook (2.0.1)
-      omniauth-oauth2 (~> 1.2)
     omniauth-oauth2 (1.4.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
@@ -190,7 +195,7 @@ DEPENDENCIES
   figaro
   jbuilder (~> 2.0)
   jquery-rails
-  omniauth-facebook
+  omniauth-facebook!
   pg
   puma
   rails (= 4.2.5.1)

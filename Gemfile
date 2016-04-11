@@ -36,7 +36,7 @@ gem 'pg'
 gem 'puma'
 gem 'devise'
 gem 'twitter-bootstrap-rails'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', github: 'gioblu/omniauth-facebook'
 gem 'figaro'
 
 group :development, :test do
