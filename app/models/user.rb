@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
   has_many :favorites
 
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>", small: "30x30>" },
-                    :url  => "/assets/documents/:id/:style/:basename.:extension",
-                    :path => "/public/assets/users/avatars/:id/:style/:basename.:extension",
+                    :url  => "/assets/users/avatars/:id/:style/:filename.:extension",
+                    :path => "/public/assets/users/avatars/:id/:style/:filename.:extension",
                     :storage => :s3,
                     :s3_region => "us-west-2",
               :bucket => "deus-project",
