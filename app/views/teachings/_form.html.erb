@@ -1,4 +1,5 @@
 <%= form_for(@teaching) do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
   <% if @teaching.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@teaching.errors.count, "error") %> prohibited this teaching from being saved:</h2>
@@ -22,10 +23,6 @@
   <div class="field">
     <%= f.label :body %><br>
     <%= f.text_area :body %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
   </div>
   <div class="actions">
     <%= f.submit %>
