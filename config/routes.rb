@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+
   resources :favorites
   resources :comments
   resources :teachings
+  resources :profile, only: :show
 
   devise_scope :user do
     get :sign_up, to: 'devise/registrations#new'
@@ -10,6 +12,10 @@ Rails.application.routes.draw do
 
     get :change_password, to: 'registrations#change_password'
     put :change_password, to: 'registrations#update_password'
+
+    # member do
+    #   get :profile, to: 'profile#show'
+    # end
 
     root to: 'teachings#index'
   end
