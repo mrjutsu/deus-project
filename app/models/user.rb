@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
 
   validates_with AttachmentSizeValidator, attributes: :avatar, :less_than => 2.megabytes
 
+  enum role: [:normal,:admin,:super_admin]
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
