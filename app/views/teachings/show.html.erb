@@ -1,3 +1,8 @@
+<div class="teaching-info">
+</div>
+<div class="teaching">
+</div>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -12,13 +17,10 @@
 
 <p>
   <strong>Body:</strong>
-  <%= @teaching.body %>
 </p>
+<%= @teaching.body.html_safe %>
 
 <p>
   <strong>User:</strong>
-  <%= @teaching.user %>
+  <%= @teaching.user.full_name %>
 </p>
-
-<%= link_to 'Edit', edit_teaching_path(@teaching) %> |
-<%= link_to 'Back', teachings_path %>

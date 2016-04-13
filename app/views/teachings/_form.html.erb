@@ -12,19 +12,14 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :teaching_name %><br>
-    <%= f.text_field :teaching_name %>
+  <div class="form-group">
+    <%= f.text_field :teaching_name, class: "form-control", placeholder: "Nombre de la enseñanza" %>
   </div>
-  <div class="field">
-    <%= f.label :summary %><br>
-    <%= f.text_area :summary %>
+  <div class="form-group">
+    <%= f.text_area :summary, class: "form-control", placeholder: "Descripción de la enseñanza" %>
   </div>
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
+  <div class="form-group">
+    <%= f.text_area :body, class: "form-control froala-editor", placeholder: "Escribe aquí la enseñanza..." %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.submit 'Guardar', class: "btn btn-default" %>
 <% end %>

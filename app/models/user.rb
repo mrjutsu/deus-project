@@ -37,4 +37,12 @@ class User < ActiveRecord::Base
     end
   end
 
+  def full_name
+    if self.first_name.nil? && self.last_name.nil?
+      'Nombre no disponible'
+    else
+      self.first_name + ' ' + self.last_name
+    end
+  end
+
 end
