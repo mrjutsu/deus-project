@@ -65,7 +65,7 @@ class TeachingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_teaching
-      @teaching = Teaching.find(params[:id])
+      @teaching = Teaching.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
