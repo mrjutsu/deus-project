@@ -1,26 +1,8 @@
 <div class="teaching-info">
+  <h3><%= @teaching.teaching_name %></h3>
+  <p><%= @teaching.user.full_name %></p>
+  <p><%= @teaching.summary %></p>
 </div>
 <div class="teaching">
+  <%= @teaching.body.html_safe %>
 </div>
-
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Teaching name:</strong>
-  <%= @teaching.teaching_name %>
-</p>
-
-<p>
-  <strong>Summary:</strong>
-  <%= @teaching.summary %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-</p>
-<%= @teaching.body.html_safe %>
-
-<p>
-  <strong>User:</strong>
-  <%= @teaching.user.full_name %>
-</p>
