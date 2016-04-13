@@ -13,14 +13,10 @@ Rails.application.routes.draw do
     get :change_password, to: 'registrations#change_password'
     put :change_password, to: 'registrations#update_password'
 
-    # member do
-    #   get :profile, to: 'profile#show'
-    # end
-
     root to: 'teachings#index'
   end
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations_controller" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
