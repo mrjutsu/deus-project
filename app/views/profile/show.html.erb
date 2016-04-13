@@ -1,5 +1,4 @@
-<h1>Profile#show</h1>
-<%= image_tag @user.avatar.url(:medium,false) %>
+<%= image_tag @user.avatar.url %>
 <p>
-  ID: <%= current_user.id %>
+  <%= user_full_name %>
 </p>
