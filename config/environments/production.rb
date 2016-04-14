@@ -76,4 +76,23 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.default_url_options = { host: 'deus.co' }
+  Rails.application.routes.default_url_options[:host] = 'deus.co'
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    :address   => ENV["SEND_PULSE_ADDRESS"],
+    :port      => ENV["SEND_PULSE_PORT"]
+    :enable_starttls_auto => true, # detects and uses STARTTLS
+    :user_name => ENV["SEND_PULSE_LOGIN"],
+    :password  => ENV["SEND_PULSE_PASSWORD"], # SMTP password is any valid API key
+    :authentication => 'login' # Mandrill supports 'plain' or 'login'
+  }
+
+  # config.action_mailer.perform_deliveries = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default :charset => "utf-8"
+
 end
