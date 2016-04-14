@@ -84,7 +84,7 @@ Rails.application.configure do
 
   config.action_mailer.smtp_settings = {
     :address   => ENV["SEND_PULSE_ADDRESS"],
-    :port      => ENV["SEND_PULSE_PORT"]
+    :port      => ENV["SEND_PULSE_PORT"],
     :enable_starttls_auto => true, # detects and uses STARTTLS
     :user_name => ENV["SEND_PULSE_LOGIN"],
     :password  => ENV["SEND_PULSE_PASSWORD"], # SMTP password is any valid API key
