@@ -6,9 +6,12 @@ class Teaching < ActiveRecord::Base
 
   has_many :comments
   has_many :favorites
+  has_many :corrections
 
   has_many :teachings_approvals
   has_many :approvals, through: :teachings_approvals
+
+  # has_many :approvals, through: :teachings_approvals
 
   has_attached_file :document,
                     :url  => "/assets/documents/:id/:style/:basename.:extension",

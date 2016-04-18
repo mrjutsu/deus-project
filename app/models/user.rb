@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :teachings
   has_many :comments
   has_many :favorites
+  has_many :corrections
 
   has_many :teachings_approvals
   has_many :approved_teachings, through: :teachings_approvals
@@ -22,7 +23,7 @@ class User < ActiveRecord::Base
 
   validates_with AttachmentSizeValidator, attributes: :avatar, :less_than => 2.megabytes
 
-  enum role: [:normal,:admin,:super_admin]
+  enum role: [:normal,:editor,:admin,:super_admin]
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

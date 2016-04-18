@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414141128) do
+ActiveRecord::Schema.define(version: 20160418213046) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,17 @@ ActiveRecord::Schema.define(version: 20160414141128) do
 
   add_index "comments", ["teaching_id"], name: "index_comments_on_teaching_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "corrections", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "user_id"
+    t.integer  "teaching_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "corrections", ["teaching_id"], name: "index_corrections_on_teaching_id", using: :btree
+  add_index "corrections", ["user_id"], name: "index_corrections_on_user_id", using: :btree
 
   create_table "favorites", force: :cascade do |t|
     t.integer  "user_id"
@@ -67,6 +78,16 @@ ActiveRecord::Schema.define(version: 20160414141128) do
   add_index "teachings", ["slug"], name: "index_teachings_on_slug", unique: true, using: :btree
   add_index "teachings", ["user_id"], name: "index_teachings_on_user_id", using: :btree
 
+  create_table "teachings_approvals", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "teaching_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "teachings_approvals", ["teaching_id"], name: "index_teachings_approvals_on_teaching_id", using: :btree
+  add_index "teachings_approvals", ["user_id"], name: "index_teachings_approvals_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -101,7 +122,11 @@ ActiveRecord::Schema.define(version: 20160414141128) do
 
   add_foreign_key "comments", "teachings"
   add_foreign_key "comments", "users"
+  add_foreign_key "corrections", "teachings"
+  add_foreign_key "corrections", "users"
   add_foreign_key "favorites", "teachings"
   add_foreign_key "favorites", "users"
   add_foreign_key "teachings", "users"
+  add_foreign_key "teachings_approvals", "teachings"
+  add_foreign_key "teachings_approvals", "users"
 end
