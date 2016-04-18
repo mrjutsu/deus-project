@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :favorites
 
+  has_many :teachings_approvals
+  has_many :approved_teachings, through: :teachings_approvals
+
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>", small: "30x30>" },
                     :url  => "/assets/users/avatars/:id/:style/:filename.:extension",
                     :path => "/public/assets/users/avatars/:id/:style/:filename.:extension",
