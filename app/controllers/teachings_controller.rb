@@ -1,6 +1,7 @@
 class TeachingsController < ApplicationController
   before_action :set_teaching, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index,:show]
+  load_and_authorize_resource :except => [:index,:show]
 
   # GET /teachings
   # GET /teachings.json

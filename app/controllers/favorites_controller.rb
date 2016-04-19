@@ -1,5 +1,7 @@
 class FavoritesController < ApplicationController
   before_action :set_favorite, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:create,:destroy]
+  load_and_authorize_resource :only => [:create,:destroy]
 
   # GET /favorites
   # GET /favorites.json
