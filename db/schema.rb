@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160418213046) do
+ActiveRecord::Schema.define(version: 20160419164124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,13 +66,15 @@ ActiveRecord::Schema.define(version: 20160418213046) do
     t.text     "summary"
     t.text     "body"
     t.integer  "user_id"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "document_file_name"
     t.string   "document_content_type"
     t.integer  "document_file_size"
     t.datetime "document_updated_at"
     t.string   "slug"
+    t.boolean  "approved",              default: false
+    t.boolean  "invisible",             default: false
   end
 
   add_index "teachings", ["slug"], name: "index_teachings_on_slug", unique: true, using: :btree
