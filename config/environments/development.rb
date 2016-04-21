@@ -40,15 +40,15 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :sendmail
 
   config.action_mailer.smtp_settings = {
     :address   => ENV["SEND_PULSE_ADDRESS"],
     :port      => ENV["SEND_PULSE_PORT"],
-    :enable_starttls_auto => true, # detects and uses STARTTLS
+    :enable_starttls_auto => true,
     :user_name => ENV["SEND_PULSE_LOGIN"],
-    :password  => ENV["SEND_PULSE_PASSWORD"], # SMTP password is any valid API key
-    :authentication => 'login' # Mandrill supports 'plain' or 'login'
+    :password  => ENV["SEND_PULSE_PASSWORD"],
+    :authentication => 'login'
   }
 
   # config.action_mailer.perform_deliveries = false
