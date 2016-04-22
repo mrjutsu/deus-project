@@ -44,7 +44,7 @@ class RegistrationsController < Devise::RegistrationsController
 	protected
 
 	  def update_params
-  		params.require(:user).permit(:first_name, :last_name, :gender, :email, :avatar)
+  		params.require(:user).permit(:first_name, :last_name, :gender, :email, :avatar, :username)
   	end
 
   	def update_resource(resource,params)

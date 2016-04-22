@@ -1,6 +1,6 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-group">
-    <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Correo Electrónico" %>
+    <%= f.text_field :login, autofocus: true, class: "form-control", placeholder: "Correo Electrónico o Nombre De Usuario" %>
   </div>
 
   <div class="form-group">

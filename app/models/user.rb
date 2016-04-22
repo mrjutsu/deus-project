@@ -2,7 +2,10 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable, omniauth_providers: [:facebook]
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable, omniauth_providers: [:facebook],
+         authentication_keys: [:login]
+
+  attr_accessor :login
 
   has_many :teachings
   has_many :comments
@@ -23,6 +26,13 @@ class User < ActiveRecord::Base
 
   validates_with AttachmentSizeValidator, attributes: :avatar, :less_than => 2.megabytes
 
+  validates :username,
+    :presence => true,
+    :uniqueness => {
+    :case_sensitive => false
+  }
+  validate :validate_username
+
   enum role: [:normal,:editor,:admin,:super_admin]
 
   def self.from_omniauth(auth)
@@ -41,6 +51,21 @@ class User < ActiveRecord::Base
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
         user.email = data["email"] if user.email.blank?
       end
+    end
+  end
+
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions.to_h).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+    elsif conditions.has_key?(:username) || conditions.has_key?(:email)
+      where(conditions.to_h).first
+    end
+  end
+
+  def validate_username
+    if User.where(email: username).exists?
+      errors.add(:username, :invalid)
     end
   end
 

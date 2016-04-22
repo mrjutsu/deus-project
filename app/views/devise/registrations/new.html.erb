@@ -2,6 +2,13 @@
   <%= devise_error_messages! %>
 
   <div class="form-group">
+    <%= f.text_field :username, class: "form-control", placeholder: "Nombre De Usuario" %>
+    <p class="help-block">
+      Letras, números, guiones bajos y puntuación.
+    </p>
+  </div>
+
+  <div class="form-group">
     <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Correo electrónico" %>
   </div>
 
