@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   resources :favorites
   resources :comments
   resources :teachings
-  resources :profile, only: :show
+  resources :profiles, only: :show do
+    member do
+      get :teachings, to: 'profiles#teachings'
+    end
+  end
 
   devise_scope :user do
     get :sign_up, to: 'devise/registrations#new'

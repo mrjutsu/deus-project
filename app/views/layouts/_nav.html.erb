@@ -49,6 +49,9 @@
               <%= link_to 'Perfil', profile_path(current_user.id) %>
             </li>
             <li>
+              <%= link_to 'Mis Enseñanzas', teachings_profile_path(current_user.id) %>
+            </li>
+            <li>
               <%= link_to 'Editar Perfil', edit_user_registration_path %>
             </li>
             <li role="separator" class="divider"></li>

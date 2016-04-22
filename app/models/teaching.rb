@@ -13,6 +13,8 @@ class Teaching < ActiveRecord::Base
 
   # has_many :approvals, through: :teachings_approvals
 
+  scope :visible_teachings, -> { where( approved: true, invisible: false ) }
+
   has_attached_file :document,
                     :url  => "/assets/documents/:id/:style/:basename.:extension",
                     :path => "/public/assets/teachings/documents/:id/:style/:basename.:extension",
@@ -21,5 +23,9 @@ class Teaching < ActiveRecord::Base
               :bucket => "deus-project",
               :s3_protocol => 'https'
   # validates_attachment_content_type :program, content_type: ['application/pdf']
+
+  def make_public
+    self.approved = true
+  end
 
 end

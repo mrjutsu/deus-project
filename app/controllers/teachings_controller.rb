@@ -6,7 +6,7 @@ class TeachingsController < ApplicationController
   # GET /teachings
   # GET /teachings.json
   def index
-    @teachings = Teaching.all
+    @teachings = Teaching.visible_teachings
   end
 
   # GET /teachings/1
@@ -61,6 +61,10 @@ class TeachingsController < ApplicationController
       format.html { redirect_to teachings_url, notice: 'Teaching was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def make_public
+
   end
 
   private
